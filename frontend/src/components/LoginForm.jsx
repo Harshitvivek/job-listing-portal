@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { login } from '../services/authService';
-import { TEInput, TERipple } from "tw-elements-react";
-import { AiOutlineTwitter } from "react-icons/ai";
-import { BiLogoFacebook } from "react-icons/bi";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../services/firebase';
+
+
+
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
+
+
+  const [email, setEmail] = useState('');  
   const [password, setPassword] = useState('');
   const recaptchaRef = React.createRef();
 
@@ -15,10 +19,12 @@ const LoginForm = () => {
     const token = recaptchaRef.current.getValue();
     recaptchaRef.current.reset();
     
-    if (token) {
+    if(token) {
       try {
-        await login(email, password);
+        signInWithEmailAndPassword(auth,email,password)
+        // await login(email, password);
         alert('Login successful!');
+        window.location="/Profile";
       } catch (error) {
         alert('Login failed: ' + error.message);
       }
@@ -27,123 +33,13 @@ const LoginForm = () => {
     }
   };
 
-//   return (
-//     <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-//       <div className="md:w-1/3 max-w-sm">
-//         <img
-//           src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-//           alt="Sample image"
-//         />
-//       </div>
-//       <div className="md:w-1/3 max-w-sm">
-//         <div className="text-center md:text-left">
-//           <label className="mr-1">Sign in with</label>
-//           <button
-//             type="button"
-//             className="mx-1 h-9 w-9  rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_9px_-4px_#3b71ca]"
-//           >
-//             <BiLogoFacebook
-//               size={20}
-//               className="flex justify-center items-center w-full"
-//             />
-//           </button>
-//           <button
-//             type="button"
-//             className="inlne-block mx-1 h-9 w-9 rounded-full bg-blue-600 hover:bg-blue-700 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]"
-//           >
-//             <AiOutlineTwitter
-//               size={20}
-//               className="flex justify-center items-center w-full"
-//             />
-//           </button>
-//         </div>
-//         <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-//           <p className="mx-4 mb-0 text-center font-semibold text-slate-500">
-//             Or
-//           </p>
-//         </div>
-//         <input
-//           className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded"
-//           type="text"
-//           placeholder="Email Address"
-//         />
-//         <input
-//           className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4"
-//           type="password"
-//           placeholder="Password"
-//         />
-//         <div className="mt-4 flex justify-between font-semibold text-sm">
-//           <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
-//             <input className="mr-1" type="checkbox" />
-//             <span>Remember Me</span>
-//           </label>
-//           <a
-//             className="text-blue-600 hover:text-blue-700 hover:underline hover:underline-offset-4"
-//             href="#"
-//           >
-//             Forgot Password?
-//           </a>
-//         </div>
-//         <div className="text-center md:text-left">
-//           <button
-//             className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
-//             type="submit"
-//           >
-//             Login
-//           </button>
-//         </div>
-//         <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-//           Don&apos;t have an account?{" "}
-//           <a
-//             className="text-red-600 hover:underline hover:underline-offset-4"
-//             href="#"
-//           >
-//             Register
-//           </a>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
 
+  return (
+    <>
+    <div className="h-full mb-16 flex items-center justify-center bg-backgroundBlue">
 
-//   return (
-
-//     <form onSubmit={handleSubmit} className="md:w-8/12 lg:ml-6 lg:w-5/12">
-//       <h2 className="text-xl font-bold" >Login</h2>
-//       <input
-//         type="email"
-//         placeholder="Email"
-//         className="block mt-4 p-2 border rounded"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//         required
-//       />
-//       <input
-//         type="password"
-//         placeholder="Password"
-//         className="block mt-4 p-2 border rounded"
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//         required
-//       />
-//       <ReCAPTCHA
-//         ref={recaptchaRef}
-//         sitekey="YOUR_RECAPTCHA_SITE_KEY"
-//         className="mt-4"
-//       />
-//       <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-//         Login
-//       </button>
-//     </form>
-
-//   );
-
-
-return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={handleSubmit} className="md:w-8/12 lg:ml-6 lg:w-5/12 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Login</h2>
+      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
         
         <input
           type="email"
@@ -162,23 +58,22 @@ return (
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-  
+
         <ReCAPTCHA
           ref={recaptchaRef}
-          sitekey="YOUR_RECAPTCHA_SITE_KEY"
+          sitekey="6LcmS0kqAAAAAPyPd_VtHXhboLJUYbcfMFZUhJKZ"
           className="mt-4"
         />
-  
+
         <button 
           type="submit" 
-          className="w-full mt-6 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300">
+          className="w-full mt-6 bg-Authbutton text-white py-3 rounded-lg hover:bg-blue-950 transition duration-300">
           Login
         </button>
       </form>
     </div>
-  );
-  
-  
+    </>
+  );  
 };
 
 export default LoginForm;

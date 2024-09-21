@@ -1,14 +1,27 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
+
+
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyCJTRIA87LhY2dZ9nbNTOGMSZDad-wo0DQ",
+  authDomain: "job-listing-portal-5055a.firebaseapp.com",
+  projectId: "job-listing-portal-5055a",
+  storageBucket: "job-listing-portal-5055a.appspot.com",
+  messagingSenderId: "297486587729",
+  appId: "1:297486587729:web:4d71c02c89b968942ea570",
+  measurementId: "G-PC1WVWRLVH"
 };
 
+
+
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const analytics = getAnalytics(app);
+
+export const auth = getAuth();
+export const db = getFirestore(app);
+
+export default app;
