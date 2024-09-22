@@ -13,6 +13,8 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const recaptchaRef = React.createRef();
 
+  const key = import.meta.env.VITE_RECAPTCHA_KEY;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = recaptchaRef.current.getValue();
@@ -78,7 +80,7 @@ const RegisterForm = () => {
   
         <ReCAPTCHA
           ref={recaptchaRef}
-          sitekey="6LcmS0kqAAAAAPyPd_VtHXhboLJUYbcfMFZUhJKZ"
+          sitekey={key}
           className="mt-4"
         />
   

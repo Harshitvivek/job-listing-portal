@@ -9,8 +9,9 @@ import { auth } from '../services/firebase';
 
 const LoginForm = () => {
 
+  const key = import.meta.env.VITE_RECAPTCHA_KEY;
 
-  const [email, setEmail] = useState('');  
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const recaptchaRef = React.createRef();
 
@@ -61,7 +62,7 @@ const LoginForm = () => {
 
         <ReCAPTCHA
           ref={recaptchaRef}
-          sitekey="6LcmS0kqAAAAAPyPd_VtHXhboLJUYbcfMFZUhJKZ"
+          sitekey={key}
           className="mt-4"
         />
 
