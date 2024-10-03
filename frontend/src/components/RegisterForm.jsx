@@ -9,10 +9,14 @@ import { Link, useNavigate } from 'react-router-dom'; // Added Link for navigati
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('role');
   const recaptchaRef = React.createRef();
+  const key = import.meta.env.VITE_RECAPTCHA_KEY;
+
+  const navigate = useNavigate();
   const key = import.meta.env.VITE_RECAPTCHA_KEY;
 
   const navigate = useNavigate();
@@ -21,6 +25,7 @@ const RegisterForm = () => {
     e.preventDefault();
     const token = recaptchaRef.current.getValue();
     recaptchaRef.current.reset();
+
 
     if (token) {
       try {

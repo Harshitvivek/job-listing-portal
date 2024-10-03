@@ -59,7 +59,12 @@ const Header = () => {
   return (
     <header className="bg-gray-800 p-4 text-white relative">
       <nav className="flex justify-between items-center">
+    <header className="bg-gray-800 p-4 text-white relative">
+      <nav className="flex justify-between items-center">
         <div>
+          <NavLink to="/" className="text-xl font-bold">
+            Job Portal
+          </NavLink>
           <NavLink to="/" className="text-xl font-bold">
             Job Portal
           </NavLink>
@@ -213,5 +218,9 @@ const Header = () => {
     </header>
   );
 };
+
+
+
+
 
 export default Header;

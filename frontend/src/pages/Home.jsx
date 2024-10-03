@@ -19,6 +19,18 @@ const Home = () => {
     }
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Toggle Dark Mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (darkMode) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  };
+
 
   useEffect(() => {
     // Fetch jobs from backend
@@ -27,6 +39,8 @@ const Home = () => {
       .then(data => setJobs(data))
       .catch(err => console.error(err));
   }, []);
+
+  
 
   
 
@@ -123,7 +137,36 @@ const Home = () => {
 
     </div>
    );
+   );
 };
 
 
 export default Home;
+
+
+
+
+
+// import JobList from '../components/JobList';
+// import { useEffect, useState } from 'react';
+
+// const Home = () => {
+//   const [jobs, setJobs] = useState([]);
+
+//   useEffect(() => {
+//     // Fetch jobs from backend
+//     fetch('/api/jobs')
+//       .then(response => response.json())
+//       .then(data => setJobs(data))
+//       .catch(err => console.log(err));
+//   }, []);
+
+//   return (
+//     <div className="p-4">
+//       <h1 className="text-2xl font-bold">Job Listings</h1>
+//       <JobList jobs={jobs} />
+//     </div>
+//   );
+// };
+
+// export default Home;
