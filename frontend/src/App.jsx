@@ -1,14 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 // import Auth from './pages/Auth';
-// import Auth from './pages/Auth';
 import EmployerDashboard from './pages/EmployerDashboard';
 import JobSeekerDashboard from './pages/JobSeekerDashboard';
 import JobDetails from './pages/JobDetails';
 import Header from './components/Header';
-import Profile from './components/Profile';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
 import Profile from './components/Profile';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';

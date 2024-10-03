@@ -19,18 +19,6 @@ const Home = () => {
     }
   };
 
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Toggle Dark Mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  };
-
 
   useEffect(() => {
     // Fetch jobs from backend
@@ -39,8 +27,6 @@ const Home = () => {
       .then(data => setJobs(data))
       .catch(err => console.error(err));
   }, []);
-
-  
 
   
 
@@ -113,7 +99,7 @@ const Home = () => {
 
 
         <div className='flex flex-col lg:flex-row items-center justify-between mb-12 pt-18 pb-24'>
-        <div className="w-96 h-72 pr-8">
+        <div className="w-80 h-72 pr-8">
         <img src={img4} alt="" />
         </div>
         <div className="max-w-lg text-black dark:text-gray-300 pl-10 pr-10">
@@ -137,36 +123,7 @@ const Home = () => {
 
     </div>
    );
-   );
 };
 
 
 export default Home;
-
-
-
-
-
-// import JobList from '../components/JobList';
-// import { useEffect, useState } from 'react';
-
-// const Home = () => {
-//   const [jobs, setJobs] = useState([]);
-
-//   useEffect(() => {
-//     // Fetch jobs from backend
-//     fetch('/api/jobs')
-//       .then(response => response.json())
-//       .then(data => setJobs(data))
-//       .catch(err => console.log(err));
-//   }, []);
-
-//   return (
-//     <div className="p-4">
-//       <h1 className="text-2xl font-bold">Job Listings</h1>
-//       <JobList jobs={jobs} />
-//     </div>
-//   );
-// };
-
-// export default Home;

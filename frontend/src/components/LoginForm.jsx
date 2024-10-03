@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../services/firebase'; // Firebase auth instance
 import { toast } from 'react-toastify';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../services/firebase'; // Firebase auth instance
-import { toast } from 'react-toastify';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link, useNavigate } from 'react-router-dom'; // Added Link for navigation
 
@@ -15,14 +12,11 @@ const LoginForm = () => {
   const recaptchaRef = React.createRef();
   const navigate = useNavigate();
   const key = import.meta.env.VITE_RECAPTCHA_KEY;
-  const navigate = useNavigate();
-  const key = import.meta.env.VITE_RECAPTCHA_KEY;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = recaptchaRef.current.getValue();
     recaptchaRef.current.reset();
-
 
     if (token) {
       try {
@@ -40,7 +34,6 @@ const LoginForm = () => {
         toast.success('Login successful', { position: "top-center" });
         navigate('/profile');
       } catch (error) {
-        toast.error('Login failed: ' + error.message, { position: "bottom-center" });
         toast.error('Login failed: ' + error.message, { position: "bottom-center" });
       }
     } else {
