@@ -1,6 +1,9 @@
+// Profile.jsx
+
 import React, { useEffect, useState } from 'react';
-import { auth, db } from '../services/firebase';
-import { doc, getDoc} from 'firebase/firestore';
+import { auth, db } from '../services/firebase'; // Firebase authentication and Firestore
+import { doc, getDoc } from 'firebase/firestore'; // Firestore functions
+
 
 
 
@@ -45,10 +48,13 @@ const Profile = () => {
         <>
           <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Profile</h2>
           <p className="text-lg text-gray-700 mb-2">
-            <span className="font-semibold">Name:</span> {userDetails.Name}
+            <span className="font-semibold">Name:</span> {userDetails.name}
           </p>
           <p className="text-lg text-gray-700 mb-6">
             <span className="font-semibold">Email:</span> {userDetails.email}
+          </p>
+          <p className="text-lg text-gray-700 mb-6">
+            <span className="font-semibold">Role:</span> {userDetails.role}
           </p>
 
           <div className="mt-4">
@@ -59,15 +65,35 @@ const Profile = () => {
             </ul>
           </div>
 
-          <button
+          {/* <button
             className="w-full mt-6 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
             onClick={handleLogout}
           >
             Logout
-          </button>
+          </button> */}
         </>
       ) : (
-        <p className="text-center text-gray-500">Loading...</p>
+        <div class="border shadow rounded-md p-4 max-w-sm w-full mx-auto">
+          <div class="animate-pulse flex space-x-4">
+          <div class="rounded-full bg-slate-300 h-44 w-10"></div> 
+          <div class="flex-1 space-y-6 py-1">
+      <div class="h-8 bg-slate-300 rounded"></div>
+      <div class="space-y-3">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="h-2 bg-slate-300 rounded col-span-2"></div>
+          <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+          <div class="h-2 bg-slate-300 rounded col-span-2"></div>
+          <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+          <div class="h-2 bg-slate-300 rounded col-span-2"></div>
+          <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+          <div class="h-2 bg-slate-300 rounded col-span-2"></div>
+          <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+        </div>
+        <div class="h-2 bg-slate-200 rounded"></div>
+      </div>
+    </div>
+  </div>
+</div>
       )}
     </div>
   </div>
@@ -75,4 +101,3 @@ const Profile = () => {
   
   };
   export default Profile;
-  

@@ -1,6 +1,9 @@
 import JobList from '../components/JobList';
 import { useEffect, useState } from 'react';
 import img from '../assets/about-img.png';
+import img2 from '../assets/online-review-animate.svg';
+import img3 from '../assets/we-are-hiring-animate.svg';
+import img4 from '../assets/apply_animate.svg';
 
 const Home = () => {
   const [jobs, setJobs] = useState([]);
@@ -71,7 +74,42 @@ const Home = () => {
       </div>
 
 
-      {/* Top Companies Section */}
+      
+
+        <div className='flex flex-col lg:flex-row items-center justify-between mb-12 pt-32 pb-24'>
+        <div className="w-96 h-72 pr-8">
+        <img src={img2} alt="" />
+        </div>
+        <div className="max-w-lg text-black dark:text-gray-300 pl-10 pr-10">
+            <h1 className="text-4xl font-bold mb-4">Your skills are awarded by our recruiters</h1>
+            <p className="text-lg mb-6">Land on your dream job where you are recognized and appriciated!!</p>
+          </div>
+        </div>
+
+
+        <div className='flex flex-col lg:flex-row items-center justify-between mb-12 pt-20 pb-24'>
+          <div className="max-w-lg text-black dark:text-gray-300 pl-10 pr-10">
+            <h1 className="text-4xl font-bold mb-4">Find best candidates for your company</h1>
+            <p className="text-lg mb-6">Top rankers apply for job whom you can recruit for your company!!</p>
+          </div>
+          <div className="w-96 h-72 pr-8">
+            <img src={img3} alt="" />
+          </div>
+        </div>
+
+
+        <div className='flex flex-col lg:flex-row items-center justify-between mb-12 pt-18 pb-24'>
+        <div className="w-96 h-72 pr-8">
+        <img src={img4} alt="" />
+        </div>
+        <div className="max-w-lg text-black dark:text-gray-300 pl-10 pr-10">
+            <h1 className="text-4xl font-bold mb-4">Apply to your dream company in a click</h1>
+            <p className="text-lg mb-6">We provide the most simplest way to apply to your dream job!!</p>
+          </div>
+        </div>
+
+
+        {/* Top Companies Section */}
       <div className="mb-8 mt-20 w-3/5">
           <h2 className="text-backgroundBlue  dark:text-white text-xl mb-4">Top Company</h2>
           <div className="grid grid-cols-5 gap-4 bg-[#3b3b72] p-4 rounded-lg">
@@ -82,8 +120,10 @@ const Home = () => {
             <span className="text-white text-center">Apple</span>
           </div>
         </div>
+
     </div>
    );
 };
+
 
 export default Home;
