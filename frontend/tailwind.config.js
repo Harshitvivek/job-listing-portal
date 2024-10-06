@@ -24,7 +24,9 @@ export default {
     
     extend: {
       colors: {
-        backgroundBlue: '#000235', // Add your custom color here
+        // backgroundBlue: '#000235',
+        backgroundBlue:'#121212',
+        nav: '#1e1e1e', // Add your custom color here
         Authbutton: '#6858d4',
       },
     },
