@@ -12,7 +12,7 @@ const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
 
-  // Toggle Dark Mode
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     if (darkMode) {
@@ -28,7 +28,7 @@ const Header = () => {
       setUser(currentUser); // Set the authenticated user
     });
 
-    // Cleanup on component unmount
+
     return () => {
       unsubscribe();
     };
@@ -39,7 +39,7 @@ const Header = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Toggle the profile menu
+
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!isProfileMenuOpen);
   };
@@ -48,12 +48,12 @@ const Header = () => {
     navigate('profile')
   };
 
-  // Handle logout functionality
+
   const handleLogout = async () => {
     await signOut(auth);
-    setUser(null); // Clear the user state after logging out
-    setProfileMenuOpen(false); // Close the profile menu after logout
-    navigate('/'); // Redirect to home page
+    setUser(null);
+    setProfileMenuOpen(false);
+    navigate('/');
   };
 
   return (
@@ -98,12 +98,22 @@ const Header = () => {
               >
                 Home
               </NavLink>
+
+              
             </li>
+{/* smooth scroll but only from home page */}
+            {/* <a
+  href="#about"
+  onClick={handleScrollToAbout}
+  className="block px-4 py-2"
+>
+  About Us
+</a> */}
             <li>
               <NavLink
-                to="#about"
+                to="/#about"
                 className={({ isActive }) => (isActive ? "font-normal" : "") + " block px-4 py-2"}
-                aria-current={location.pathname === "#about" ? "page" : undefined}
+                aria-current={location.pathname === "/#about" ? "page" : undefined}
               >
                 About Us
               </NavLink>

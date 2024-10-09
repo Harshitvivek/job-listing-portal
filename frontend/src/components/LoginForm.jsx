@@ -20,21 +20,23 @@ const LoginForm = () => {
 
     if (token) {
       try {
-        // Sign in the user with Firebase Authentication
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log(user, role); // Role is logged as well
 
-        // Clear form fields after login
+  
         setEmail('');
         setPassword('');
         setRole('role');
 
-        // Redirect to the profile page
+
         toast.success('Login successful', { position: "top-center" });
         navigate('/profile');
       } catch (error) {
         toast.error('Login failed: ' + error.message, { position: "bottom-center" });
+        setEmail('');
+        setPassword('');
+        setRole('role');
       }
     } else {
       alert('Please complete the reCAPTCHA');
@@ -42,7 +44,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="h-full mb-0 flex items-center justify-center bg-backgroundBlue pt-12 pb-12">
+    <div className="h-full min-h-screen flex items-center justify-center bg-backgroundBlue pt-32 pb-12 px-4 md:px-0">
       <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
 
@@ -75,15 +77,15 @@ const LoginForm = () => {
           required
         />
 
-        <div className='h-20'>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={key}
-          className="mt-4"
-        />
+        <div className="h-20 flex justify-center">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={key}
+            className="mt-4"
+          />
         </div>
 
-        <button type="submit" className="w-full mt-6 bg-Authbutton p-10 text-white py-3 rounded-lg hover:bg-blue-950 transition duration-300">
+        <button type="submit" className="w-full mt-6 bg-Authbutton p-2 text-white py-3 rounded-lg hover:bg-blue-950 transition duration-300">
           Login
         </button>
 
@@ -100,8 +102,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-
-
-
-

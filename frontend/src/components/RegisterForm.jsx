@@ -36,19 +36,22 @@ const RegisterForm = () => {
           createdAt: new Date(),
         });
 
-        // Clear form fields after registration
+
         setName('');
         setEmail('');
         setPassword('');
-        setRole('role'); // Reset to default role
+        setRole('role'); 
 
-        // Notify user of successful registration
+
         toast.success("User registered successfully", { position: "top-center" });
 
         navigate('/login');
-
       } catch (error) {
         toast.error(error.message, { position: "bottom-center" });
+        setName('');
+        setEmail('');
+        setPassword('');
+        setRole('role');
       }
     } else {
       alert('Please complete the reCAPTCHA');
@@ -56,7 +59,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="h-full mb-0 flex items-center justify-center bg-backgroundBlue pt-8 pb-8">
+    <div className="h-full min-h-screen flex items-center justify-center bg-backgroundBlue pt-28 pb-8 px-4 md:px-0">
       <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Register</h2>
 
@@ -99,15 +102,15 @@ const RegisterForm = () => {
           required
         />
 
-        <div className='h-20'>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={key}
-          className="mt-4"
-        />
+        <div className="h-20 flex justify-center">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={key}
+            className="mt-4"
+          />
         </div>
 
-        <button type="submit" className="w-full mt-6 bg-Authbutton p-10 text-white py-3 rounded-lg hover:bg-blue-950 transition duration-300">
+        <button type="submit" className="w-full mt-6 bg-Authbutton p-2 text-white py-3 rounded-lg hover:bg-blue-950 transition duration-300">
           Register
         </button>
 
@@ -125,6 +128,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-
-
-
